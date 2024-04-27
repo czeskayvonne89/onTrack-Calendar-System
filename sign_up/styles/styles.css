@@ -1,23 +1,32 @@
 body {
-  background-image: url("../photos/Bg.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
+  /* background-image: url("../photos/Bg.png"); */
+  /* background-repeat: no-repeat; */
+  /* background-size: 100%;
+   */
+  background-color: #C1DABE;
   font-family: Verdana, sans-serif;
+  display: block;
 }
+
+.header-nav-bar {
+  background-color: rgb(254, 249, 239);
+}
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #fef9ef;
-  position: -webkit-sticky; /* Safari */
+  position: -webkit-sticky;
+  /* Safari */
   position: sticky;
   top: 10;
-  display:flex;
+  display: flex;
 }
 
 li {
-  display:inline-block;
+  display: inline-block;
 }
 
 li a {
@@ -32,14 +41,31 @@ li a:hover {
   background-color: #111;
 }
 
+li a:visited {
+  text-decoration: none;
+}
+
 .active {
   background-color: #c1dabe;
 }
 
 .logo {
-  float:left;
+  float: left;
   margin-right: 20px;
-  height: 50;
+  height: 50px;
+  width: 200px;
+  background-image: url("../photos/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.form-container {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 100vw;
+  height: 850px;
 }
 
 
@@ -49,12 +75,12 @@ li a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 400px;
+  min-width: 400px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 40px;
   background-color: #f9f9f9;
-
 }
 
 #signUpForm h2 {
@@ -68,7 +94,6 @@ li a:hover {
   color: #545454;
 }
 
-
 #signUpForm label {
   display: block;
   margin-bottom: 5px;
@@ -78,12 +103,13 @@ li a:hover {
 #signUpForm input[type="text"],
 #signUpForm input[type="email"],
 #signUpForm input[type="password"] {
-  width: calc(100% - 22px);
+  width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 40px;
   background-color: #F1F1F1;
+  padding-left: 45px;
 }
 
 /* Style for the button */
@@ -115,6 +141,9 @@ li a:hover {
   background-color: #F1F1F1;
   border: none;
   cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 }
 
 /* Style for the container of password input and toggle button */
@@ -125,7 +154,44 @@ li a:hover {
 /* Adjusting the position of the toggle button */
 .show-password-btn {
   position: absolute;
-  top: 50%;
-  right: 5px;
+  top: 45%;
+  right: 8px;
   transform: translateY(-50%);
+}
+
+.icon {
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-attachment: fixed;
+  background-size: 50px 22px;
+
+  &.user {
+    background-image: url(../photos/user-solid.svg);
+  }
+
+  &.email {
+    background-image: url(../photos/envelope-solid.svg);
+  }
+
+  &.password {
+    background-image: url(../photos/key-solid.svg);
+  }
+}
+
+i.icon {
+  margin-left: -30px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-attachment: fixed;
+  background-size: 50px 22px;
+  display: block;
+  height: 20px;
+  width: 38px;
+  &.eye {
+    background-image: url(../photos/eye-solid.svg);
+  }
+  &.eye-slash {
+    background-image: url(../photos/eye-slash-solid.svg);
+  }
 }
