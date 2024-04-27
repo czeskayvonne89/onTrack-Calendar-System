@@ -1,0 +1,68 @@
+body {
+  background-image: url("../photos/Bg.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-family: Verdana, sans-serif;
+}
+
+.form {
+  height: 100%;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #BBBBBB;
+}
+
+.form p {
+  text-align: left;
+  color: #b65353;
+}
+
+form input {
+  display: block;
+  font-size: 1.3rem;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: #F1F1F1;
+  box-sizing: border-box;
+}
+
+form input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #333;
+}
+
+form button {
+  display: block;
+  font-size: 1.3rem;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: #28ACEC;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+
+form button:hover {
+  background-color: #555;
+}

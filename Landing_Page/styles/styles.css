@@ -1,0 +1,67 @@
+body {
+    background-color: #fef9ef;
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.copy-section {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.copy-section::after {
+    content: "";
+    position: absolute;
+    top: 17vh;
+    right: 0;
+    width: 600px;
+    height: 600px;
+    background-image: url("../photos/landing_image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right center;
+}
+
+.copy-section .content {
+    color: black;
+    margin-left: 20px;
+}
+
+.copy-section .content h2 {
+    font-size: 2.7rem;
+    max-width: 600px;
+}
+
+.copy-section .content p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-top: 15px;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+.copy-section .content a {
+    background: #b1d8b7;
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 5px;
+    padding: 14px 30px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .copy-section::after {
+        display: none;
+    }
+}
