@@ -38,7 +38,7 @@ li a {
 }
 
 li a:hover {
-  background-color: #111;
+  /* background-color: #111; */
 }
 
 li a:visited {
@@ -69,7 +69,7 @@ li a:visited {
 }
 
 
-#signUpForm {
+#signInForm {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -83,26 +83,26 @@ li a:visited {
   background-color: #f9f9f9;
 }
 
-#signUpForm h2 {
+#signInForm h2 {
   text-align: center;
   color: #545454;
 }
 
-#signUpForm sub {
+#signInForm sub {
   display: block;
   text-align: center;
   color: #545454;
 }
 
-#signUpForm label {
+#signInForm label {
   display: block;
   margin-bottom: 5px;
   color: #545454;
 }
 
-#signUpForm input[type="text"],
-#signUpForm input[type="email"],
-#signUpForm input[type="password"] {
+#signInForm input[type="text"],
+#signInForm input[type="email"],
+#signInForm input[type="password"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -113,7 +113,7 @@ li a:visited {
 }
 
 /* Style for the button */
-#signUpForm input[type="submit"] {
+#signInForm input[type="submit"] {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
@@ -125,12 +125,12 @@ li a:visited {
 }
 
 /* Style for the paragraph below the form */
-#signUpForm p {
+#signInForm p {
   margin-top: 10px;
 }
 
 /* Style for the link within the paragraph */
-#signUpForm p a {
+#signInForm p a {
   color: #28acec;
   text-decoration: none;
 }
@@ -141,6 +141,7 @@ li a:visited {
   background-color: #F1F1F1;
   border: none;
   cursor: pointer;
+
   &:focus {
     outline: none;
   }
@@ -188,10 +189,85 @@ i.icon {
   display: block;
   height: 20px;
   width: 38px;
+
   &.eye {
     background-image: url(../photos/eye-solid.svg);
   }
+
   &.eye-slash {
     background-image: url(../photos/eye-slash-solid.svg);
   }
+}
+
+/* The container */
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border: 1px solid rgb(204, 204, 204);
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked~.checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.forgot-password {
+  text-align: center;
 }

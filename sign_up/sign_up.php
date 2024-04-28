@@ -18,7 +18,7 @@
 
     <ul>
       <li><a class="active" href="#">Sign Up</a></li>
-      <li><a href="../sign_in/sign_in.php">Login</a></li>
+      <li><a href="../sign_in/sign_in.php">Sign In</a></li>
     </ul>
   </div>
 
