@@ -1,25 +1,31 @@
 // Function to toggle password visibility
 
 function signUp() {
-  var first_name = document.getElementById("first_name").value;
-  var last_name = document.getElementById("last_name").value;
-  var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
   var confirm_password = document.getElementById("confirm_password").value;
 
+
   if (password !== confirm_password) {
-    alert("Passwords do not match.");
+    var modal = document.getElementById("sign-up-password-does-not-match-modal");
+    modal.style.display = "block";
     return false;
   }
 
   if (password.length !== 8) {
-    alert("Password must be exactly 8 characters long.");
+    var modal = document.getElementById("sign-up-password-password-length-incorrect-modal");
+    modal.style.display = "block";
     return false;
   }
 
   // Perform further validation or send the form data to the server
-  alert("Sign up successful!\nFirst Name: " + first_name + "\nLast Name: " + last_name + "\nEmail: " + email);
-  return true;
+  var modal = document.getElementById("sign-up-success-modal");
+  modal.style.display = "block";
+  return false;
+}
+
+function closeModal(modalId) {
+  var modal = document.getElementById(modalId);
+  modal.style.display = "none";
 }
 
 function togglePasswordVisibility(inputId) {

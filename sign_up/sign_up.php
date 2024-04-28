@@ -46,9 +46,42 @@
       <input type="submit" value="Sign Up"> <br> <br>
       <sub>Already have an account? <a href="../sign_in/sign_in.php">Log In</a></sub>
     </form>
-
   </div>
 </body>
+
+<!-- The Modal -->
+<div id="sign-up-success-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" onclick="closeModal('sign-up-success-modal')">&times;</span>
+      <h2>Sign Up Successful</h2>
+    </div>
+  </div>
+</div>
+
+<div id="sign-up-password-does-not-match-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header" style="background-color: orange ">
+      <span class="close" onclick="closeModal('sign-up-password-does-not-match-modal')">&times;</span>
+      <h2>Sign Up Not Successful</h2>
+    </div>
+    <div class="modal-body">
+      <p>PASSWORD DOES NOT MATCH!</p>
+    </div>
+  </div>
+</div>
+
+<div id="sign-up-password-password-length-incorrect-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header" style="background-color: orange ">
+      <span class="close" onclick="closeModal('sign-up-password-password-length-incorrect-modal')">&times;</span>
+      <h2>Sign Up Not Successful</h2>
+    </div>
+    <div class="modal-body">
+      <p>PASSWORD LENGTH MUST BE AT LEAST 8 CHARACTERS!</p>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript" src="js/sign_up.js">
 </script>
