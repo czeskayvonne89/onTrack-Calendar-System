@@ -38,12 +38,46 @@
         <button type="button" class="show-password-btn" onclick="togglePasswordVisibility('confirm_password')">
           <i id="confirm_password_eye" class="icon eye-slash" id="togglePassword"></i></button>
       </div>
-      <input type="submit" value="Change Password"></input>
+      <input type="submit" value="Change Password" onclick="return changePw();"></input></input>
       <p style="text-align:center;"><a href="../sign_in/sign_in.php">Back</a></p>
     </form>
 
   </div>
 </body>
+
+<!-- The Modal -->
+<div id="change-password-success-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" onclick="closeModal('change-password-success-modal')">&times;</span>
+      <h2>Successfully Changed Password!</h2>
+    </div>
+  </div>
+</div>
+
+<div id="change-password-does-not-match-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header" style="background-color: orange ">
+      <span class="close" onclick="closeModal('change-password-does-not-match-modal')">&times;</span>
+      <h2>Update Not Successful</h2>
+    </div>
+    <div class="modal-body">
+      <p>PASSWORD DOES NOT MATCH!</p>
+    </div>
+  </div>
+</div>
+
+<div id="change-password-password-length-incorrect-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header" style="background-color: orange ">
+      <span class="close" onclick="closeModal('change-password-password-length-incorrect-modal')">&times;</span>
+      <h2> Update Not Successful</h2>
+    </div>
+    <div class="modal-body">
+      <p>PASSWORD LENGTH MUST BE AT LEAST 8 CHARACTERS!</p>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript" src="js/password_reset.js">
 </script>
