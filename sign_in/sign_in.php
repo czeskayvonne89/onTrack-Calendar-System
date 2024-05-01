@@ -25,8 +25,8 @@
     <div class="form-container">
         <form id="signInForm" action="PHP/Authentication for Sign in.php" method="POST">
             <h2>Sign In</h2>
-            <label for="username">Username:</label>
-            <input type="text" class="icon user" id="username" name="username" required maxlength="50"><br>
+            <label for="email">Email:</label>
+            <input type="text" class="icon user" id="email" name="email" required maxlength="50"><br>
             <label for="password">Password:</label>
             <div class="input-container">
                 <input type="password" class="icon password" id="password" name="password" required>

@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
@@ -18,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Query to check if the email exists in the database
-    $sql = "SELECT * FROM people WHERE email = '$email'";
+    $sql = "SELECT * FROM `people` WHERE email = '$email'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -28,7 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Verify password
         if (password_verify($password, $stored_password)) {
-            // Password matches, authentication successful
             // Set session variables or cookies here
             echo "Authentication successful";
             // Redirect to the homepage or dashboard
@@ -36,8 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } else {
             // Password doesn't match
-            echo "Invalid password";
-        }
+            echo "Invalid password<br>";
+            echo "Stored hashed password: " . $stored_password . "<br>";
+            echo "Entered password: " . $password;
+            }
     } else {
         // Email doesn't exist, redirect to sign-up page
         header("Location: ../Sign_up/Sign up.html");
@@ -48,3 +57,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+</body>
+</html>

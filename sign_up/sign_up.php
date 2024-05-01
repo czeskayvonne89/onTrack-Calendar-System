@@ -23,7 +23,7 @@
   </div>
 
   <div class="form-container">
-    <form id="signUpForm" action="signup.php" method="post" onsubmit="return signUp()">
+    <form id="signUpForm" action="PHP/PHP for Sign up.php" method="post" onsubmit="return signUp()">
       <h2>Sign Up</h2>
       <label for="first_name">First Name</label>
       <input type="text" class="icon user" id="first_name" name="first_name" required maxlength="50"><br>
