@@ -14,11 +14,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Database connection parameters
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $db_password = ""; // Changed variable name to avoid conflict
     $dbname = "sign_up";
 
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $db_password, $dbname);
 
     // Check connection
     if ($conn->connect_error) {
@@ -36,26 +36,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Verify password
         if (password_verify($password, $stored_password)) {
-            // Set session variables or cookies here
-            echo "Authentication successful";
-            // Redirect to the homepage or dashboard
+            // Authentication successful, redirect to the dashboard
             header("Location: ../Landing_Page/landing_page.html");
             exit();
         } else {
             // Password doesn't match
-            echo "Invalid password<br>";
-            echo "Stored hashed password: " . $stored_password . "<br>";
-            echo "Entered password: " . $password;
-            }
+            echo "Invalid password";
+        }
     } else {
-        // Email doesn't exist, redirect to sign-up page
-        header("Location: ../Sign_up/Sign up.html");
+        // Email doesn't exist, redirect to the sign-up form
+        header("Location: ../../sign_up/sign_up.php");
         exit();
     }
-
-    // Close connection
+    
     $conn->close();
 }
 ?>
+
 </body>
 </html>

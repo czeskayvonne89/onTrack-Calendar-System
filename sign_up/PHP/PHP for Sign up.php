@@ -21,28 +21,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
+    // Escape user inputs for security
+    $first_name = $conn->real_escape_string($_POST['first_name']);
+    $last_name = $conn->real_escape_string($_POST['last_name']);
+    $email = $conn->real_escape_string($_POST['email']);
+    $password = $conn->real_escape_string($_POST['password']);
+    $confirm_password = $conn->real_escape_string($_POST['confirm_password']);
 
-    if ($password !== $confirm_password) {
-        echo "<script>alert('Passwords do not match.');</script>";
-    } elseif (strlen($password) !== 8) {
-        echo "<script>alert('Password must be exactly 8 characters long.');</script>";
+    // Hash the password before storing it in the database for security
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Insert user data into the database
+    $sql = "INSERT INTO `people` (first_name, last_name, email, password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
     } else {
-        // Hash the password before storing it in the database for security
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-        $sql = "INSERT INTO `people` (first_name, last_name, email, password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
-
-        if ($conn->query($sql) === TRUE) {
-            echo "<script>alert('Sign up successful!');</script>";
-            echo "<a href='../Sign_in/Sign in.php'>Go to Sign in Page</a>"; // Link to sign-in page
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
     $conn->close();

@@ -1,9 +1,6 @@
-// Function to toggle password visibility
-
 function signUp() {
   var password = document.getElementById("password").value;
   var confirm_password = document.getElementById("confirm_password").value;
-
 
   if (password !== confirm_password) {
     var modal = document.getElementById("sign-up-password-does-not-match-modal");
@@ -17,17 +14,16 @@ function signUp() {
     return false;
   }
 
-  // Perform further validation or send the form data to the server
-  var modal = document.getElementById("sign-up-success-modal");
-  modal.style.display = "block";
-  return false;
+  // If validation passes, the form will be submitted
+  return true;
 }
+
 
 function closeModal(modalId) {
   var modal = document.getElementById(modalId);
   modal.style.display = "none";
 }
-
+// Function to toggle password visibility
 function togglePasswordVisibility(inputId) {
   var passwordInput = document.getElementById(inputId);
   var eyeIcon = document.getElementById(inputId + "_eye");
