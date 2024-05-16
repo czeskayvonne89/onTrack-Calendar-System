@@ -33,11 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Email exists, fetch the user's password
         $row = $result->fetch_assoc();
         $stored_password = $row['password'];
+        echo($password);
+        echo($stored_password);
+        echo($password == $stored_password ? "true" : "false");
 
         // Verify password
         if (password_verify($password, $stored_password)) {
             // Authentication successful, redirect to the dashboard
-            header("Location: ../Landing_Page/landing_page.html");
+            header("Location: ../../user_dashboard/index.php");
             exit();
         } else {
             // Password doesn't match
@@ -45,10 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // Email doesn't exist, redirect to the sign-up form
-        header("Location: ../../sign_up/sign_up.php");
+        // header("Location: ../../sign_up/sign_up.php");
+        // Password doesn't match
+        echo "Invalid credential";
         exit();
     }
-    
     $conn->close();
 }
 ?>

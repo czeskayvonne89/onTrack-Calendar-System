@@ -23,7 +23,7 @@
     </div>
 
     <div class="form-container">
-        <form id="signInForm" action="PHP/Authentication for Sign in.php" method="POST">
+        <form id="signInForm" action="php/authenticate.php" method="POST">
             <h2>Sign In</h2>
             <label for="email">Email:</label>
             <input type="text" class="icon user" id="email" name="email" required maxlength="50"><br>

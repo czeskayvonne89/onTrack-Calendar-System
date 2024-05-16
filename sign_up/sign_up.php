@@ -23,7 +23,7 @@
   </div>
 
   <div class="form-container">
-    <form id="signUpForm" action="PHP/PHP for Sign up.php" method="post" onsubmit="return signUp()">
+    <form id="signUpForm" action="PHP/register.php" method="post" onsubmit="return signUp()">
       <h2>Sign Up</h2>
       <label for="first_name">First Name</label>
       <input type="text" class="icon user" id="first_name" name="first_name" required maxlength="50"><br>
@@ -83,7 +83,7 @@
   </div>
 </div>
 
-<script type="text/javascript" src="js/sign_up.js">
+<script type="text/javascript" src="js/sign_up.js"></script>
 </script>
 
 </html>

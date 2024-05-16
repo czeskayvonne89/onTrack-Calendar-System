@@ -11,7 +11,7 @@
 
 <body>
   <div class="header-nav-bar">
-    <a href="../index.php">
+    <a href="#">
       <div class="logo">
       </div>
     </a>
