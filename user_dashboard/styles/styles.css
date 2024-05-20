@@ -84,3 +84,28 @@ li a:visited {
   width: 100%;
   margin-top: 20px;
 }
+
+#calendar {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+#month {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#days-of-week, #days {
+  display: flex;
+  flex-wrap: wrap;
+}
+#days-of-week div, #days div {
+  width: 14.28%;
+  padding: 10px 0;
+}
+#days div {
+  cursor: pointer;
+}
+#days div:hover {
+  background-color: #f0f0f0;
+}

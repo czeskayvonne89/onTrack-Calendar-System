@@ -13,7 +13,7 @@
 
 <div>
     <div class="header-nav-bar">
-        <a href="#">
+        <a href="../index.php">
             <div class="logo">
             </div>
         </a>
@@ -59,6 +59,24 @@
                 </div>
             </div>
         </div>
+        <div id="calendar">
+        <div id="month">
+            <span id="prev" onclick="prevMonth()">&#10094;</span>
+            <span id="month-name"></span>
+            <span id="next" onclick="nextMonth()">&#10095;</span>
+        </div>
+        <div id="days-of-week">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+        </div>
+        <div id="days"></div>
+    </div>
+    <script src="script/script.js"></script>
 </div>
 </form>
 </body>
