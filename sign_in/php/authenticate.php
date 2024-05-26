@@ -3,59 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Sign In</title>
 </head>
 <body>
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+session_start();
 
-    // Database connection parameters
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+
     $servername = "localhost";
     $username = "root";
-    $db_password = ""; // Changed variable name to avoid conflict
+    $db_password = ""; // Database password
     $dbname = "sign_up";
 
-    // Create connection
     $conn = new mysqli($servername, $username, $db_password, $dbname);
-
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Query to check if the email exists in the database
-    $sql = "SELECT * FROM `people` WHERE email = '$email'";
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT user_id, password FROM `people` WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
 
-    if ($result->num_rows > 0) {
-        // Email exists, fetch the user's password
-        $row = $result->fetch_assoc();
-        $stored_password = $row['password'];
-        echo($password);
-        echo($stored_password);
-        echo($password == $stored_password ? "true" : "false");
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($user_id, $stored_password);
+        $stmt->fetch();
 
-        // Verify password
         if (password_verify($password, $stored_password)) {
-            // Authentication successful, redirect to the dashboard
-            header("Location: ../../user_dashboard/index.php");
+            $_SESSION['user_id'] = $user_id;
+            header("Location: ../../user_dashboard/dashboard.php");
             exit();
         } else {
-            // Password doesn't match
             echo "Invalid password";
         }
     } else {
-        // Email doesn't exist, redirect to the sign-up form
-        // header("Location: ../../sign_up/sign_up.php");
-        // Password doesn't match
-        echo "Invalid credential";
+        header("Location: ../../sign_up/sign_up.php");
         exit();
     }
+    $stmt->close();
     $conn->close();
 }
 ?>
-
 </body>
 </html>

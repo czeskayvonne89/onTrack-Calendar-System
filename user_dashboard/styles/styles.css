@@ -5,6 +5,8 @@ body {
   background-color: #C1DABE;
   font-family: Verdana, sans-serif;
   display: block;
+  height: 100%; /* Set body height to 100% of viewport height */
+  overflow-y: auto; /* Add vertical scrollbar when content exceeds body height */
 }
 
 .header-nav-bar {
@@ -36,9 +38,9 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
-  /* background-color: #111; */
-}
+/*li a:hover {
+ background-color: #111; 
+}*/
 
 li a:visited {
   text-decoration: none;
@@ -84,7 +86,7 @@ li a:visited {
   width: 100%;
   margin-top: 20px;
 }
-
+/* styles for the calendar */
 #calendar {
   width: 300px;
   margin: 0 auto;
@@ -109,3 +111,31 @@ li a:visited {
 #days div:hover {
   background-color: #f0f0f0;
 }
+/* styles for the popup */
+#addEventPopup {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#popupBackground {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+.event {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}   
