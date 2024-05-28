@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../../sign_in/sign_in.php");
+    header("Location: ../../sign_in/php/authenticate.php");
     exit();
 }
 
