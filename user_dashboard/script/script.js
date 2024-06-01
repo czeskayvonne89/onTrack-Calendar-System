@@ -36,6 +36,29 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
             document.getElementById('addEventPopup').style.display = 'block';
             document.getElementById('start_date').value = date;
             document.getElementById('end_date').value = date;
+            document.getElementById('start_date').value = date;
+            document.getElementById('start_time').value = null;
+            document.getElementById('end_date').value = date;
+            document.getElementById('end_time').value = null;
+            document.getElementById('details').value = null;
+            document.getElementById('event_name').value = null;
+            document.getElementById('event_id').value = null;
+            document.getElementById('eventForm').action = "php/insert_event.php";
+            document.getElementById('event_btn').value = 'ADD EVENT';
+        }
+
+        function showPopupEdit(event) {
+            document.getElementById('popupBackground').style.display = 'block';
+            document.getElementById('addEventPopup').style.display = 'block';
+            document.getElementById('start_date').value = event.start_date;
+            document.getElementById('start_time').value = event.start_time;
+            document.getElementById('end_date').value = event.end_date;
+            document.getElementById('end_time').value = event.end_time;
+            document.getElementById('details').value = event.details;
+            document.getElementById('event_name').value = event.event_name;
+            document.getElementById('event_id').value = event.event_id;
+            document.getElementById('eventForm').action = "php/update_event.php";
+            document.getElementById('event_btn').value = 'UPDATE EVENT';
         }
 
         function closePopup() {
@@ -48,10 +71,6 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
                 const date = event.target.getAttribute('data-date');
                 showPopup(date);
             }
-        });
-
-        document.getElementById('closeButton').addEventListener('click', function () {
-            closePopup();
         });
 
         document.addEventListener('DOMContentLoaded', () => {
