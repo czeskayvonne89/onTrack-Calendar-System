@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare("INSERT INTO `events` (user_id, eventName, startDate, startTime, endDate, endTime, repeating, details) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("isssssss", $user_id, $event_name, $start_date, $start_time, $end_date, $end_time, $repeating, $details);
 
-    if ($stmt->execute()) {
+    if ($stmt->execute()) { 
         header("Location: ../index.php");
     } else {
         echo "Error: " . $stmt->error;
