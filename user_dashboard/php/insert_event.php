@@ -13,9 +13,9 @@ $msg = '';
 if (!empty($_POST)) {
     // Check if POST variable "name" exists, if not default the value to blank, basically the same for all variables
     $event_name = isset($_POST['event_name']) ? $_POST['event_name'] : '';
-    $start_date = isset($_POST['start_date']) ? $_POST['start_date'] : date('Y-m-d H:i:s');
+    $start_date = isset($_POST['start_date']) ? $_POST['start_date'] : date('Y-m-d');
     $start_time = isset($_POST['start_time']) ? $_POST['start_time'] : '';
-    $end_date = isset($_POST['end_date']) ? $_POST['end_date'] : date('Y-m-d H:i:s');
+    $end_date = isset($_POST['end_date']) ? $_POST['end_date'] : date('Y-m-d');
     $end_time = isset($_POST['end_time']) ? $_POST['end_time'] : '';
     $details = isset($_POST['details']) ? $_POST['details'] : '';
 

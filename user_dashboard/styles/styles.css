@@ -95,11 +95,14 @@ li a:visited {
   display: grid;
   grid-gap: 0;
   table-layout: auto;
-  width: 70%;
-  padding-left: 8vh;
+  width: 1200px;
 }
 
-.grid-container > div {
+#next #prev {
+  cursor: pointer;
+}
+
+.grid-container>div {
   background-color: rgba(255, 255, 255, 0.8);
   align-items: center;
   padding: 20px 0;
@@ -112,32 +115,58 @@ li a:visited {
   align-items: center;
 }
 
-#days-of-week, #days {
+#month-name {
+  font-size: 30px;
+}
+
+#days-of-week,
+#days {
   display: flex;
   flex-wrap: wrap;
   grid-auto-columns: auto;
 }
 
-#days-of-week div, #days div {
+#days-of-week div,
+#days div {
   width: 14.28%;
   height: 50px;
   padding: 10px 0;
   table-layout: auto;
   border: 1px solid #000000;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+#days-of-week div {
+  font-size: 25px;
+  background-color: #f0f0f0;
+}
+
+#days-of-week div.weekend {
+  color: #fef9ef;
+  background-color: #FF0000;
 }
 
 #days div {
   cursor: pointer;
+  font-size: 20px;
 }
 
 #days div:hover {
   background-color: #f0f0f0;
 }
 
+.day {
+  background-color: #fef9ef;
+}
+
+.day.rest-day {
+  color: #FF0000;
+}
+
 /* styles for the popup */
 #addEventPopup {
   display: none;
+  flex-direction: column;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -146,6 +175,59 @@ li a:visited {
   background-color: white;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  min-width: 300px;
+  border-radius: 25px;
+  background-color: rgb(254, 249, 239);
+
+  .field {
+    display: flex;
+    margin-bottom: 16px;
+
+    .label,
+    .input,
+    .btn {
+      flex: 50%;
+    }
+
+    .input {
+      width: 350px;
+      align-self: flex-end;
+
+      input,
+      textarea {
+        width: 300px;
+        border: 1px solid #545454;
+      }
+    }
+
+    .btn {
+
+      input,
+      button {
+        border-radius: 8px;
+        font-size: 20px;
+        padding: 5px 16px;
+      }
+
+      &.cancel {
+        input,
+        button {
+          background-color: #E72929;
+          border: 1px solid #E72932;
+          color: #ffffff;
+        }
+      }
+
+      &.submit {
+        input,
+        button {
+          background-color: #7ABA78;
+          border: 1px solid #7ABA81;
+          color: #ffffff;
+        }
+      }
+    }
+  }
 }
 
 #popupBackground {
@@ -165,53 +247,92 @@ li a:visited {
   padding: 10px;
   margin-bottom: 10px;
 }
+
 /* Responsive design */
 @media (max-width: 1200px) {
   section {
-      margin: 20px;
-      padding: 15px;
+    margin: 20px;
+    padding: 15px;
   }
-  
+
   ul li a img {
-      width: 90px;
-      height: 90px;
+    width: 90px;
+    height: 90px;
   }
-  
+
   ul li a {
-      padding: 15px;
+    padding: 15px;
   }
 }
 
 @media (max-width: 768px) {
   ul li {
-      flex: 1 1 150px;
+    flex: 1 1 150px;
   }
-  
+
   ul li a img {
-      width: 80px;
-      height: 80px;
+    width: 80px;
+    height: 80px;
   }
-  
+
   ul li a span {
-      font-size: 1em;
+    font-size: 1em;
   }
 }
 
 @media (max-width: 480px) {
   ul li {
-      flex: 1 1 100%;
+    flex: 1 1 100%;
   }
-  
+
   ul li a img {
-      width: 70px;
-      height: 70px;
+    width: 70px;
+    height: 70px;
   }
-  
+
   ul li a {
-      padding: 10px;
+    padding: 10px;
   }
-  
+
   ul li a span {
-      font-size: 0.9em;
+    font-size: 0.9em;
   }
+}
+
+/* Table */
+.divTable {
+  display: table;
+  width: 100%;
+}
+
+.divTableRow {
+  display: table-row;
+}
+
+.divTableHeading {
+  background-color: #EEE;
+  display: table-header-group;
+}
+
+.divTableCell,
+.divTableHead {
+  border: 1px solid #999999;
+  display: table-cell;
+  padding: 3px 10px;
+}
+
+.divTableHeading {
+  background-color: #EEE;
+  display: table-header-group;
+  font-weight: bold;
+}
+
+.divTableFoot {
+  background-color: #EEE;
+  display: table-footer-group;
+  font-weight: bold;
+}
+
+.divTableBody {
+  display: table-row-group;
 }

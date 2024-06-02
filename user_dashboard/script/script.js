@@ -11,11 +11,12 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
             const daysInMonth = new Date(year, month + 1, 0).getDate();
 
             for (let i = 0; i < firstDay; i++) {
-                daysContainer.innerHTML += '<div></div>';
+                daysContainer.innerHTML += '<div class="day"></div>';
             }
 
             for (let i = 1; i <= daysInMonth; i++) {
-                daysContainer.innerHTML += `<div class="day" data-date="${year}-${month + 1}-${i}">${i}</div>`;
+                var isWeekend = (i+ firstDay)%7 < 2;
+                daysContainer.innerHTML += `<div class="day ${isWeekend ? 'rest-day': '' }" data-date="${year}-${month + 1}-${i}">${i}</div>`;
             }
         }
 
@@ -34,20 +35,20 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
         function showPopup(date) {
             document.getElementById('popupBackground').style.display = 'block';
             document.getElementById('addEventPopup').style.display = 'block';
-            document.getElementById('start_date').value = date;
             document.getElementById('end_date').value = date;
             document.getElementById('start_date').value = date;
             document.getElementById('start_time').value = null;
-            document.getElementById('end_date').value = date;
             document.getElementById('end_time').value = null;
             document.getElementById('details').value = null;
             document.getElementById('event_name').value = null;
             document.getElementById('event_id').value = null;
             document.getElementById('eventForm').action = "php/insert_event.php";
-            document.getElementById('event_btn').value = 'ADD EVENT';
+            document.getElementById('event_btn').value = 'CREATE';
+            document.getElementById('addEventPopupTitle').innerHTML = 'ADD EVENT';
         }
 
-        function showPopupEdit(event) {
+        function showPopupEdit(e, event) {
+            e.preventDefault();
             document.getElementById('popupBackground').style.display = 'block';
             document.getElementById('addEventPopup').style.display = 'block';
             document.getElementById('start_date').value = event.start_date;
@@ -58,7 +59,8 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
             document.getElementById('event_name').value = event.event_name;
             document.getElementById('event_id').value = event.event_id;
             document.getElementById('eventForm').action = "php/update_event.php";
-            document.getElementById('event_btn').value = 'UPDATE EVENT';
+            document.getElementById('event_btn').value = 'UPDATE';
+            document.getElementById('addEventPopupTitle').innerHTML = 'UPDATE EVENT';
         }
 
         function closePopup() {
@@ -68,8 +70,8 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
 
         document.getElementById('days').addEventListener('click', function (event) {
             if (event.target && event.target.classList.contains('day')) {
-                const date = event.target.getAttribute('data-date');
-                showPopup(date);
+                const date = new Date(event.target.getAttribute('data-date'));
+                showPopup(`${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)}`);
             }
         });
 
