@@ -66,7 +66,7 @@ li a:visited {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .card {
@@ -98,8 +98,9 @@ li a:visited {
   width: 1200px;
 }
 
-#next #prev {
+#next, #prev {
   cursor: pointer;
+  width: 50px;
 }
 
 .grid-container>div {
@@ -113,6 +114,8 @@ li a:visited {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: bisque;
+  border-color: 1px solid antiquewhite;
 }
 
 #month-name {
@@ -163,6 +166,10 @@ li a:visited {
   color: #FF0000;
 }
 
+.day.now {
+  background-color: #F3CA52;
+}
+
 /* styles for the popup */
 #addEventPopup {
   display: none;
@@ -175,6 +182,72 @@ li a:visited {
   background-color: white;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  min-width: 300px;
+  border-radius: 25px;
+  background-color: rgb(254, 249, 239);
+
+  .field {
+    display: flex;
+    margin-bottom: 16px;
+
+    .label,
+    .input,
+    .btn {
+      flex: 50%;
+    }
+
+    .input {
+      width: 350px;
+      align-self: flex-end;
+
+      input,
+      textarea {
+        width: 300px;
+        border: 1px solid #545454;
+      }
+    }
+
+    .btn {
+
+      input,
+      button {
+        border-radius: 8px;
+        font-size: 20px;
+        padding: 5px 16px;
+      }
+
+      &.cancel {
+        input,
+        button {
+          background-color: #E72929;
+          border: 1px solid #E72932;
+          color: #ffffff;
+        }
+      }
+
+      &.submit {
+        input,
+        button {
+          background-color: #7ABA78;
+          border: 1px solid #7ABA81;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+#deleteEventPopup {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0  , 0, 0.5);
   min-width: 300px;
   border-radius: 25px;
   background-color: rgb(254, 249, 239);
