@@ -11,6 +11,11 @@ body {
 
 .header-nav-bar {
   background-color: rgb(254, 249, 239);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(254, 249, 239);
+  padding: 10px;
 }
 
 ul {
@@ -394,6 +399,39 @@ li a:visited {
   padding: 3px 10px;
 }
 
+.action-buttons {
+  text-align: right;
+}
+
+.update, .delete {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.update {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.update:hover {
+  background-color: #45a049;
+}
+
+.delete-button {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+.delete:hover {
+  background-color: #da190b;
+}
+
+
 .divTableHeading {
   background-color: #EEE;
   display: table-header-group;
@@ -408,4 +446,25 @@ li a:visited {
 
 .divTableBody {
   display: table-row-group;
+}
+
+/*Navigation Buttons*/
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.nav-buttons a {
+  color: #545454;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav-buttons a:hover {
+  background-color: #c1dabe;
+}
+
+.logout-button {
+  margin-right: auto;
 }

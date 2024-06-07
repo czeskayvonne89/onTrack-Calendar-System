@@ -67,9 +67,11 @@ $conn->close();
             <a href="../index.php">
                 <div class="logo"></div>
             </a>
-            <ul>
-                <li><a href="#">&nbsp;</a></li>
-            </ul>
+            <div class="nav-buttons">
+                <a href="../sign_in/sign_in.php" class="logout-button">Logout</a>
+                <a href="pomodoro/pomodoro.html">Pomodoro</a>
+                <a href="contact_us/contact_us.php">Contact Us</a>
+            </div>
         </div>
 
         <div class="card-container">
@@ -81,12 +83,9 @@ $conn->close();
                     <form method="POST" action="">
                         <select name="timeline" id="timeline" onchange="this.form.submit()">
                             <option value="">Select</option>
-                            <option value="today" <?php echo $timeline && $timeline == 'today' ? 'selected' : ''; ?>>Today
-                            </option>
-                            <option value="weekly" <?php echo $timeline && $timeline == 'weekly' ? 'selected' : ''; ?>>7
-                                Days</option>
-                            <option value="monthly" <?php echo $timeline && $timeline == 'monthly' ? 'selected' : ''; ?>>
-                                30 Days</option>
+                            <option value="today" <?php echo $timeline && $timeline == 'today' ? 'selected' : ''; ?>>Today</option>
+                            <option value="weekly" <?php echo $timeline && $timeline == 'weekly' ? 'selected' : ''; ?>>7 Days</option>
+                            <option value="monthly" <?php echo $timeline && $timeline == 'monthly' ? 'selected' : ''; ?>>30 Days</option>
                         </select>
                     </form>
                     <div class="output-container">
@@ -125,11 +124,8 @@ $conn->close();
                                                 <?php echo $event['details'] ?>
                                             </div>
                                             <div class="divTableCell" style="text-align: right">
-                                                <a href="" onClick='showPopupEdit(event, <?php echo json_encode($event) ?>)'
-                                                    style="display: inline">Update</a>
-
-                                                <a href=""
-                                                    onclick="showPopupDelete(event, <?php echo $event['event_id'] ?>)">Delete</a>
+                                                <a href="" id="update" onClick='showPopupEdit(event, <?php echo json_encode($event) ?>)' style="display: inline">Update</a>
+                                                <a href="" id="delete" onclick="showPopupDelete(event, <?php echo $event['event_id'] ?>)">Delete</a>
                                             </div>
                                         </div>
                                     <?php } ?>
@@ -144,8 +140,7 @@ $conn->close();
 
         </div>
         <div id="calendar">
-            <div style="text-align: right;margin-bottom: 16px"><button type="button" onclick="showPopup()"
-                    style="width: 156px;font-size: 20px;">Add New Event</button></div>
+            <div style="text-align: right;margin-bottom: 16px"><button type="button" onclick="showPopup()" style="width: 156px;font-size: 20px;">Add New Event</button></div>
             <div id="month">
                 <span id="prev" onclick="prevMonth()">&#10094;</span>
                 <span id="month-name"></span>
@@ -162,7 +157,6 @@ $conn->close();
             </div>
             <div id="days"></div>
         </div>
-
 
         <div id="popupBackground"></div>
         <div id="addEventPopup">
@@ -198,15 +192,13 @@ $conn->close();
 
                 <div class="field">
                     <div class="btn cancel"><button type="button" onclick="closePopup()">Cancel</button></div>
-                    <div class="btn submit" style="text-align: right;"><input type="submit" id="event_btn"
-                            value="Add Event" name="add_event" /></div>
+                    <div class="btn submit" style="text-align: right;"><input type="submit" id="event_btn" value="Add Event" name="add_event" /></div>
                 </div>
             </form>
         </div>
         <div id="deleteEventPopup">
             <h2 id="deleteEventPopupTitle">Are you sure you want to delete this event?</h2>
-            <form method='post' action='php/delete_event.php' style="display: inline" id="form-delete"
-                name="delete_event">
+            <form method='post' action='php/delete_event.php' style="display: inline" id="form-delete" name="delete_event">
                 <input type='hidden' id='delete_event_id' name="event_id" value=''>
                 <input type='hidden' name="timeline" value='<?php echo $timeline ?>'>
                 <div class="field">

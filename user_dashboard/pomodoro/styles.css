@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.header-nav-bar {
+    display: flex;
+    align-items: center;
+    background-color: rgb(254, 249, 239);
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 50px;
+    width: 200px;
+    background-image: url("../photos/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav-buttons a {
+    color: #545454;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-buttons a:hover {
+    background-color: #c1dabe;
+}
+
+.logout-button {
+    margin-right: auto;
+}
+
+.timer-container {
+    text-align: center;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
+}
+
+#timer {
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+
+button {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start {
+    background-color: #28a745;
+    color: white;
+}
+
+#reset {
+    background-color: #dc3545;
+    color: white;
+}
+
+input[type="number"] {
+    width: 50px;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    text-align: center;
+}
