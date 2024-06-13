@@ -44,7 +44,7 @@
                     echo "Invalid password";
                 }
             } else {
-                header("Location: user_dashboard/dashboard.php");
+                header("Location: ../sign_in.php");
                 exit();
             }
 
