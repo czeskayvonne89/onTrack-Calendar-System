@@ -40,6 +40,16 @@ function setMinDate() {
     document.getElementById('end_date').setAttribute('min', today);
 }
 
+function validateDates() {
+    const startDate = document.getElementById('start_date').value;
+    const endDate = document.getElementById('end_date').value;
+    if (startDate && endDate && startDate > endDate) {
+        document.getElementById('end_date').setCustomValidity('End date cannot be earlier than start date.');
+    } else {
+        document.getElementById('end_date').setCustomValidity('');
+    }
+}
+
 function showPopup(date) {
     document.getElementById('popupBackground').style.display = 'block';
     document.getElementById('addEventPopup').style.display = 'block';
@@ -54,6 +64,7 @@ function showPopup(date) {
     document.getElementById('event_btn').value = 'CREATE';
     document.getElementById('addEventPopupTitle').innerHTML = 'ADD EVENT';
     setMinDate();
+    addDateValidation();
 }
 
 function showPopupEdit(e, event) {
@@ -71,6 +82,7 @@ function showPopupEdit(e, event) {
     document.getElementById('event_btn').value = 'UPDATE';
     document.getElementById('addEventPopupTitle').innerHTML = 'UPDATE EVENT';
     setMinDate();
+    addDateValidation();
 }
 
 function showPopupDelete(e, event_id) {
@@ -90,13 +102,19 @@ function closeDeletePopup() {
     document.getElementById('deleteEventPopup').style.display = 'none';
 }
 
+function addDateValidation() {
+    document.getElementById('start_date').addEventListener('change', validateDates);
+    document.getElementById('end_date').addEventListener('change', validateDates);
+}
+
 document.getElementById('days').addEventListener('click', function (event) {
     if (event.target && event.target.classList.contains('day')) {
         const date = new Date(event.target.getAttribute('data-date'));
-        showPopup(`${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)}`); // Fixed template literal
+        showPopup(`${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)}`);
     }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
     generateCalendar(currentMonth, currentYear);
+    addDateValidation();
 });
