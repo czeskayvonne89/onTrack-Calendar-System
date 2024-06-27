@@ -3,7 +3,7 @@ let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
 
 function generateCalendar(month, year) {
-    document.getElementById('month-name').textContent = `${monthNames[month]} ${year}`; // Fixed template literal
+    document.getElementById('month-name').textContent = `${monthNames[month]} ${year}`;
     const daysContainer = document.getElementById('days');
     daysContainer.innerHTML = '';
 
@@ -18,7 +18,7 @@ function generateCalendar(month, year) {
         var isWeekend = (i + firstDay) % 7 < 2;
         var nowDate = new Date();
         var isNow = year == nowDate.getFullYear() && month == nowDate.getMonth() && i == nowDate.getDate();
-        daysContainer.innerHTML += `<div class="day ${isWeekend ? 'rest-day' : ''} ${isNow ? 'now' : ''}" data-date="${year}-${month + 1}-${i}">${i}</div>`; // Fixed template literal
+        daysContainer.innerHTML += `<div class="day ${isWeekend ? 'rest-day' : ''} ${isNow ? 'now' :  ''}" data-date="${year}-${month + 1}-${i}">${i}</div>`;
     }
 }
 
@@ -34,12 +34,6 @@ function nextMonth() {
     generateCalendar(currentMonth, currentYear);
 }
 
-function setMinDate() {
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('start_date').setAttribute('min', today);
-    document.getElementById('end_date').setAttribute('min', today);
-}
-
 function showPopup(date) {
     document.getElementById('popupBackground').style.display = 'block';
     document.getElementById('addEventPopup').style.display = 'block';
@@ -53,7 +47,6 @@ function showPopup(date) {
     document.getElementById('eventForm').action = "php/insert_event.php";
     document.getElementById('event_btn').value = 'CREATE';
     document.getElementById('addEventPopupTitle').innerHTML = 'ADD EVENT';
-    setMinDate();
 }
 
 function showPopupEdit(e, event) {
@@ -70,7 +63,6 @@ function showPopupEdit(e, event) {
     document.getElementById('eventForm').action = "php/update_event.php";
     document.getElementById('event_btn').value = 'UPDATE';
     document.getElementById('addEventPopupTitle').innerHTML = 'UPDATE EVENT';
-    setMinDate();
 }
 
 function showPopupDelete(e, event_id) {
@@ -79,6 +71,7 @@ function showPopupDelete(e, event_id) {
     document.getElementById('deleteEventPopup').style.display = 'block';
     document.getElementById('delete_event_id').value = event_id;
 }
+
 
 function closePopup() {
     document.getElementById('popupBackground').style.display = 'none';
@@ -93,7 +86,7 @@ function closeDeletePopup() {
 document.getElementById('days').addEventListener('click', function (event) {
     if (event.target && event.target.classList.contains('day')) {
         const date = new Date(event.target.getAttribute('data-date'));
-        showPopup(`${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)}`); // Fixed template literal
+        showPopup(`${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)}`);
     }
 });
 
